@@ -1,0 +1,514 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --header-bg: #ffffff;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f0f0f0;
+  --header-bg: #1f1f1f;
+  --card-bg: #1f1f1f;
+  --border-color: #444;
+}
+
+* {
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: var(--header-bg);
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo,
+.lote,
+.leyenda-item {
+  transition:
+    filter 0.4s ease,
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+.logo {
+  height: 40px;
+}
+
+.cart {
+  position: relative;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 3px 6px;
+  font-size: 12px;
+}
+
+.contenido {
+  padding: 20px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #2c2c2c;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 10;
+}
+
+footer .footer-item {
+  cursor: pointer;
+}
+
+footer .footer-item:hover {
+  opacity: 0.7;
+}
+
+.opciones-container {
+  position: absolute;
+  bottom: 70px;
+  margin: auto;
+  background-color: var(--bg-color);
+  right: 0;
+  left: 0;
+  width: 100%;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition: opacity 0.3s ease-in-out, max-height 0.5s ease-out;
+}
+
+.mas-opciones {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-inline: 4%;
+  padding-block: 20px;
+}
+
+.opcion {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  color: var(--text-color);
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.opcion:hover {
+  opacity: 0.7;
+}
+
+.vista {
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.vista.active {
+  max-height: fit-content;
+  opacity: 1;
+  visibility: visible;
+}
+
+.opciones-container.active {
+  max-height: fit-content;
+  opacity: 1;
+  visibility: visible;
+}
+
+.mapa {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.mapa-base {
+  width: 100%;
+  display: block;
+}
+
+.lote {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.lote.disponible {
+  background-color: #4caf50;
+}
+.lote.reservado {
+  background-color: #ff9800;
+}
+.lote.vendido {
+  background-color: #f44336;
+}
+.lote.bloqueado {
+  background-color: #c0c0c0;
+}
+
+.leyenda {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 10px;
+}
+
+.leyenda-item {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: white;
+}
+
+.leyenda-item.disponible {
+  background-color: #4caf50;
+}
+.leyenda-item.reservado {
+  background-color: #ff9800;
+}
+.leyenda-item.vendido {
+  background-color: #f44336;
+}
+.leyenda-item.bloqueado {
+  background-color: #c0c0c0;
+  color: black;
+}
+
+/* FOOTER */
+
+.footer-tabbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background-color: var(--bg-color);
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+/* MODAL */
+
+.green-text {
+  color: #5ac235;
+}
+
+.brown-text {
+  color: #ffa500;
+}
+
+.red-text {
+  color: #ff0000;
+}
+
+.green-image {
+  filter: brightness(0) saturate(100%) invert(59%) sepia(100%) saturate(443%) hue-rotate(67deg) brightness(98%)
+    contrast(93%);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+  backdrop-filter: blur(2px);
+  transition: opacity 0.3s ease;
+}
+
+.modal {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-radius: 20px;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  max-height: 90vh;
+  position: relative;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+.modal h2,
+.modal h3,
+.modal p,
+.modal span,
+.modal small,
+.modal strong {
+  color: var(--text-color);
+}
+
+.modal hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+}
+
+.lote-lista li {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal.image-only {
+  padding: 0;
+  border-radius: 16px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.modal.image-only img {
+  border-radius: 20px;
+  width: 100%;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow:
+    rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
+  > img {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.modal-disponible-title {
+  text-align: center;
+}
+
+.modal-disponible-content {
+  overflow: auto;
+  max-height: 25vh;
+  padding-inline: 8px;
+
+  > .separe-text {
+    padding-block: 4px;
+  }
+}
+
+.lote-lista {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.lote-lista li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.lote-lista button.remove-lote {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.boton-secundario {
+  width: 85%;
+  padding: 12px;
+  border-radius: 30px;
+  border: 2px solid #4caf50;
+  background: white;
+  color: #4caf50;
+  font-weight: bold;
+  margin: 10px auto;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+}
+
+.grid-info-col2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Colores para estados */
+.modal .estado-disponible {
+  color: #4caf50;
+}
+.modal .estado-reservado {
+  color: #ffa500;
+}
+.modal .estado-vendido {
+  color: #f44336;
+}
+
+.icon-green-modal {
+  border: 8px solid #4caf4f62;
+  > img {
+    background-color: #45a049;
+  }
+}
+
+.icon-orange-modal {
+  border: 8px solid #ffa60042;
+  > img {
+    background-color: #ffa500;
+  }
+}
+
+.icon-red-modal {
+  border: 8px solid #ff00003f;
+  > img {
+    background-color: #ff0000;
+  }
+}
+
+.modal-type-icon {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+  left: -32px;
+  z-index: 9999;
+
+  > img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    border-radius: 50%;
+    padding: 10px;
+    z-index: 9999;
+  }
+}
+
+.modal .boton-principal {
+  width: 85%;
+  margin: auto;
+  padding: 16px 12px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 12px;
+  font-size: 16px;
+  color: white;
+  display: block;
+}
+
+.modal .boton-outline {
+  width: 85%;
+  margin: auto;
+  padding: 16px 12px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 12px;
+  font-size: 16px;
+  background: transparent;
+  border: 2px solid #4caf50;
+  color: #4caf50;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  > span {
+    margin-left: 8px;
+  }
+}
+
+.modal .whatsapp-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-disponible {
+  background: #4caf50;
+  border: 2px solid #4caf50;
+}
+.btn-disponible:hover {
+  background: #45a049;
+}
+.btn-vendido {
+  background: #f44336;
+  border: 2px solid #f44336;
+}
+.btn-vendido:hover {
+  background: #d30101;
+}
+.btn-reservado {
+  background: #ffa500;
+}

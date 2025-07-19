@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Costa del Valle</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/toggle.css" />
+</head>
+
+<body>
+    <header>
+        <label class="theme-switch">
+            <input type="checkbox" id="themeToggle">
+            <span class="slider"></span>
+        </label>
+        <img src="./assets/logo-light.png" alt="Costa del Valle" class="logo theme-sensitive"
+            data-img-light="./assets/logo-light.png" data-img-dark="./assets/logo-dark.png" />
+        <div class="cart" id="cart">
+            🛒<span class="badge">4</span>
+        </div>
+    </header>
+
+    <div class="contenido" id="contenido">
+    </div>
+
+
+    <div class="opciones-container" id="mas">
+        <div class="mas-opciones">
+            <div class="opcion" id="galeriaBtn">
+                <div class="svg-icon footer-item" data-target="galeria" data-src="./assets/galeria.svg"></div>
+                <span>Galería</span>
+            </div>
+            <div class="opcion" id="ubicacionBtn">
+                <div class="svg-icon footer-item" data-target="ubicacion" data-src="./assets/ubicacion.svg"></div>
+                <span>Ubicación</span>
+            </div>
+            <div class="opcion" id="contactoBtn">
+                <div class="svg-icon footer-item" data-target="contacto" data-src="./assets/contacto.svg"></div>
+                <span>Contacto</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="footer-tabbar">
+        <div class="tab-item">
+            <div class="svg-icon footer-item" data-target="disponibilidad" data-src="./assets/disponibilidad.svg"></div>
+            <span>Disponibilidad</span>
+        </div>
+        <div class="tab-item">
+            <div class="svg-icon footer-item" data-target="tour-virtual" data-src="./assets/tour.svg"></div>
+            <span>Tour Virtual</span>
+        </div>
+        <div class="tab-item">
+            <div class="svg-icon footer-item" data-target="video" data-src="./assets/video.svg"></div>
+            <span>Video</span>
+        </div>
+        <div class="tab-item">
+            <div class="svg-icon" id="mas_btn" data-target="mas" data-src="./assets/mas.svg"></div>
+            <span>Más</span>
+        </div>
+    </nav>
+
+
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div id="modal" class="modal">
+            <button class="modal-close" onclick="closeModal()">
+                <img src="./assets/close.svg" alt="X">
+            </button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
